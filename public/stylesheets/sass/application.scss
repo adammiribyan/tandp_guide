@@ -1,3 +1,10 @@
+$font-color:        black;
+$background-color:  white;
+
+$link-color:         #1A9D00;
+$link-hover-color:   $link-color;
+$link-visited-color: $link-color;
+
 html, body, div, span, applet, object, iframe,
 h1, h2, h3, h4, h5, h6, p, blockquote, pre,
 a, abbr, acronym, address, big, cite, code,
@@ -48,13 +55,15 @@ table {
 }
 
 html {
-  background-color: white;
-  color: black;
+  background-color: $background-color;
+  color: $font-color;
 }
 
 body {
-  font-size: 12px;
+  font-size: 62.5%;
   font-family: Helvetica, Arial, sans-serif;
+  background-color: $background-color;
+  color: $font-color;
 }
 
 p {
@@ -64,10 +73,9 @@ p {
 }
 
 h1 {
-  font-size: 2em; /* 24px */
-  line-height: 1.5em; /* 36px */
-  margin-top: 1em;
-  margin-bottom: 0.5em;
+  font-size: 2.5em;
+  line-height: 1.5;
+  margin-bottom: 1.5em;
 }
 
 h2 {
@@ -113,4 +121,96 @@ strong {
 
 em {
   font-style: italic;
+}
+
+a {
+  text-decoration: underline;
+  cursor: pointer;
+  
+  &:link { color: $link-color; }
+  &:visited { color: $link-visited-color; }
+  
+  &:hover {
+    text-decoration: none;
+    color: $link-hover-color;
+  }
+}
+
+.container {
+  font-size: 1.2em;
+  width: 902px;
+  margin: 0 auto;
+  position: relative;
+  padding-top: 3.333em;
+}
+
+.content {
+  width: 562px;
+  margin: 0 auto;
+  position: relative;
+  z-index: 100;
+  
+  &>h1 {
+    margin-bottom: 0.25em;
+  }
+}
+
+p {
+  &.lid {
+    color: #666;
+    font-size: 1.5em;
+    line-height: 1.2;
+  }
+  
+  &.notice {
+    font-size: 1.1666em;
+  }
+}
+
+ul.taboo {
+  list-style-type: none;
+  //list-style-image: url('/images/market.gif');
+  margin: 1em 0 2.5em 0;
+  background: url("/images/no-sign.png") center no-repeat;
+  
+  &>li {
+    &:before {
+      content: '\2014\a0';
+      float: left;
+      margin-left: -1.25em;
+    }
+    
+    &>* {
+      text-indent: 0;
+      
+      &:first-child:-moz-first-node {
+        margin-top: -1.2em;
+      }      
+    }
+  }  
+  
+  li {
+    display: inline-block;
+    width: 45%;
+    margin: 0.5em 1em 0.5em 1.3em;
+    padding: 0;
+    vertical-align: top;
+    behavior: expression(
+      ( !this.before && parentNode && parentNode.tagName == 'UL' )
+      ?
+        ( this.before = true )
+        & ( parentNode.style.listStyleImage = 'none' )
+        & (
+          ( this.firstChild && this.firstChild.firstChild )
+          ?
+            ( this.firstChild.style.marginTop = '-1.2em' )
+            & ( this.firstChild.style.position = 'relative' )
+          : ''
+        )
+        & ( eNOBR = document.createElement( '<nobr style="position: relative; display: block; width: 1.25em; left: -1.25em; margin: 0 -1.25em -1.2em 0;" />' ) )
+        & ( eNOBR.innerHTML = '&mdash;&nbsp;' )
+        & ( this.insertBefore( eNOBR, this.firstChild ) )
+      : ''
+    );
+  }
 }
