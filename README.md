@@ -1,11 +1,11 @@
 # Dependencies
 
-## Brochure
+1. Brochure
 ```
 sudo gem install brochure
 ```
 
-## Sass
+2. Sass
 ```
 sudo gem install sass
 ```
