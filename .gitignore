@@ -1,0 +1,6 @@
+.DS_Store
+.bundle
+.redcar
+.sass-cache
+log/*.log
+tmp/**/*
